@@ -10,17 +10,17 @@ public class Room {
     private long id;
     private String name;
     private double width;
-    private double lenght;
+    private double length;
 
     @ManyToOne
     @JoinColumn(name = "property_id" , nullable = false)
     private Property property;
 
-    public Room(long id, String name, double width, double lenght, Property property) {
+    public Room(long id, String name, double width, double length, Property property) {
         this.id = id;
         this.name = name;
         this.width = width;
-        this.lenght = lenght;
+        this.length = length;
         this.property = property;
     }
     public Room(){
@@ -39,8 +39,8 @@ public class Room {
         return width;
     }
 
-    public double getLenght() {
-        return lenght;
+    public double getLength() {
+        return length;
     }
 
     public Property getProperty() {
