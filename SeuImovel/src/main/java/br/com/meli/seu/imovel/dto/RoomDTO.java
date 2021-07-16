@@ -43,4 +43,8 @@ public class RoomDTO {
         return rooms.stream().map(room -> new RoomDTO(room.getName(), room.getWidth(), room.getLength()))
                 .collect(Collectors.toList());
     }
+
+    public static RoomDTO convert(Room room) {
+        return new RoomDTO(room.getName(), room.getWidth(), room.getLength());
+    }
 }

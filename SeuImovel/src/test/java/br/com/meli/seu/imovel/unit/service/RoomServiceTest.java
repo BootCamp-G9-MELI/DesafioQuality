@@ -30,8 +30,7 @@ public class RoomServiceTest {
 	private void init() {
 		roomService = new RoomService(roomRepository);
 	}
-	
-	
+
 	@Test
 	public void mustReturnBiggestRoom() {
 		Property property = new Property("Casa 01", null);

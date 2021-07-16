@@ -56,4 +56,14 @@ public class PropertyController {
     	return new ResponseEntity<>(propertyPriceDTO, HttpStatus.OK);
     }
 
+    @GetMapping("{id}/biggest-room")
+    public ResponseEntity<RoomDTO> getBiggestRoom(@PathVariable long id){
+        Property property = propertyService.findPropertyById(id);
+        List<Room> roomList = propertyService.getRoomsByProperty(property);
+        Room biggestRoom = propertyService.getBiggestRoom(roomList);
+        RoomDTO roomDTO = RoomDTO.convert(biggestRoom);
+
+        return new ResponseEntity<>(roomDTO, HttpStatus.OK);
+    }
+
 }

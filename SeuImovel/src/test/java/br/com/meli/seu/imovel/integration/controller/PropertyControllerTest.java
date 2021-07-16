@@ -1,5 +1,6 @@
 package br.com.meli.seu.imovel.integration.controller;
 
+import br.com.meli.seu.imovel.dto.RoomDTO;
 import br.com.meli.seu.imovel.entity.Property;
 import br.com.meli.seu.imovel.entity.Room;
 import br.com.meli.seu.imovel.service.CreateDatabaseService;
@@ -81,7 +82,29 @@ public class PropertyControllerTest {
         mock.perform(get("/property/{id}/price", id))
                 .andExpect(status().is4xxClientError());
     }
-    
-    
+
+    @Test
+    public void mustReturnBiggestPropertyRoom() throws Exception {
+        long id = 1;
+        Property property = propertyService.findPropertyById(id);
+        List<Room> roomList = propertyService.getRoomsByProperty(property);
+        Room biggestRoom = propertyService.getBiggestRoom(roomList);
+        RoomDTO roomDTO = RoomDTO.convert(biggestRoom);
+
+        mock.perform(get("/property/{id}/biggest-room", id))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.name").value(roomDTO.getName()))
+                .andExpect(jsonPath("$.width").value(roomDTO.getWidth()))
+                .andExpect(jsonPath("$.length").value(roomDTO.getLength()));
+    }
+
+
+    @Test
+    public void mustThrowPropertyNotFoundExceptionBiggestRoom() throws Exception {
+        long id = 100;
+        mock.perform(get("/property/{id}/biggest-room", id))
+                .andExpect(status().is4xxClientError());
+    }
 
 }

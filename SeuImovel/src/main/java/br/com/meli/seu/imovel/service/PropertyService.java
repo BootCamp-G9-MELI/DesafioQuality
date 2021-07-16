@@ -41,4 +41,9 @@ public class PropertyService {
 	public BigDecimal calculatePropertyPrice(Property property, double propertySize) {
 		return property.getDistrict().getPriceM2().multiply(new BigDecimal(propertySize));
 	}
+
+
+	public Room getBiggestRoom(List<Room> roomList) {
+		return roomService.getBiggestRoom(roomList);
+	}
 }

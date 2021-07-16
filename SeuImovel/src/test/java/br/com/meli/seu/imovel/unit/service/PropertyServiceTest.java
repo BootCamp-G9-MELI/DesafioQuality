@@ -31,7 +31,7 @@ public class PropertyServiceTest {
 	private void init() {
 		propertyService = new PropertyService(propertyRepository, roomService);
 	}
-
+	
 	@Test
 	void mustCalculateM2OfProperty(){
 		Property property = new Property("Casa 01", null);
