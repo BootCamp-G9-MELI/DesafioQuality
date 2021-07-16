@@ -15,6 +15,7 @@ import org.mockito.Mock;
 
 import br.com.meli.seu.imovel.entity.Property;
 import br.com.meli.seu.imovel.entity.Room;
+import br.com.meli.seu.imovel.service.DistrictService;
 import br.com.meli.seu.imovel.service.PropertyService;
 
 public class PropertyServiceTest {
@@ -26,10 +27,13 @@ public class PropertyServiceTest {
 
 	@Mock
 	private RoomService roomService;
+	
+	@Mock
+	private DistrictService districtService;
 
 	@BeforeEach
 	private void init() {
-		propertyService = new PropertyService(propertyRepository, roomService);
+		propertyService = new PropertyService(propertyRepository, roomService, districtService);
 	}
 	
 	@Test
@@ -58,4 +62,6 @@ public class PropertyServiceTest {
 
 		assertEquals(new BigDecimal("16000000.0"), propertyService.calculatePropertyPrice(property, 1600.0));
 	}
+	
+	
 }

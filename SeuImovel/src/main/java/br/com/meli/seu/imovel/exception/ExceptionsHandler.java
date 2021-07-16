@@ -12,5 +12,10 @@ public class ExceptionsHandler {
     public ResponseEntity<String> defaultHandler(PropertyNotFoundException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
     }
+    
+    @ExceptionHandler(DistrictNotFoundException.class)
+    public ResponseEntity<String> defaultHandler(DistrictNotFoundException e) {
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
 
 }

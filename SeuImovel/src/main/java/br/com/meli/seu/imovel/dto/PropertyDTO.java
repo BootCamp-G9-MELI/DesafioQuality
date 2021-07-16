@@ -18,4 +18,5 @@ public class PropertyDTO {
     public String getName() {
         return name;
     }
+    
 }
