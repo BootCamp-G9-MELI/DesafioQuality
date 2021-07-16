@@ -8,14 +8,14 @@ import java.util.Set;
 public class District {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "district_id_generator", sequenceName = "district_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "district_sequence")
     private long id;
 
     private String name;
     private BigDecimal priceM2;
 
-    public District(long id, String name, BigDecimal priceM2) {
-        this.id = id;
+    public District(String name, BigDecimal priceM2) {
         this.name = name;
         this.priceM2 = priceM2;
     }

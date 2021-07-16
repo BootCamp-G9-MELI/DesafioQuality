@@ -18,14 +18,20 @@ import org.springframework.stereotype.Service;
 public class PropertyService {
 
 	private final PropertyRepository propertyRepository;
+	private final RoomService roomService;
 
 	@Autowired
-	public PropertyService(PropertyRepository propertyRepository) {
+	public PropertyService(PropertyRepository propertyRepository, RoomService roomService) {
 		this.propertyRepository = propertyRepository;
+		this.roomService = roomService;
 	}
 
 	public Property findPropertyById(long id){
 		return propertyRepository.findById(id).orElseThrow(() -> new PropertyNotFoundException("Property not found."));
+	}
+
+	public List<Room> getRoomsByProperty(Property property) {
+		return roomService.getRoomsByProperty(property);
 	}
 
 	public double calculateM2(List<Room> rooms) {

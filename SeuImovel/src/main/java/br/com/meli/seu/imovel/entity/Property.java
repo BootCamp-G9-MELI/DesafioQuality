@@ -10,7 +10,8 @@ import java.util.Set;
 public class Property {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "property_id_generator", sequenceName = "property_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "property_sequence")
     private long id;
     private String name;
 
@@ -18,9 +19,7 @@ public class Property {
     @JoinColumn(name = "district_id" , nullable = false)
     private District district;
 
-
-    public Property(long id, String name, District district) {
-        this.id = id;
+    public Property(String name, District district) {
         this.name = name;
         this.district = district;
     }

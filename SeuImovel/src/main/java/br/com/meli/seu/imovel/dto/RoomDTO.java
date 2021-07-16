@@ -1,6 +1,10 @@
 package br.com.meli.seu.imovel.dto;
 
+import br.com.meli.seu.imovel.entity.Room;
+
 import javax.validation.constraints.*;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class RoomDTO {
 
@@ -33,5 +37,10 @@ public class RoomDTO {
 
     public double getLength() {
         return length;
+    }
+
+    public static List<RoomDTO> convert(List<Room> rooms) {
+        return rooms.stream().map(room -> new RoomDTO(room.getName(), room.getWidth(), room.getLength()))
+                .collect(Collectors.toList());
     }
 }

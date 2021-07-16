@@ -34,13 +34,13 @@ public class RoomServiceTest {
 	
 	@Test
 	public void mustReturnBiggestRoom() {
-		Property property = new Property(1, "Casa 01", null);
+		Property property = new Property("Casa 01", null);
 		List<Room> rooms = new ArrayList<>();
 		
-		rooms.add(new Room(1, "Banheiro", 4, 3, property));
-		rooms.add(new Room(2, "Quarto", 8, 7, property));
-		rooms.add(new Room(3, "Cozinha", 15, 10, property));
-		rooms.add(new Room(4, "Sala", 20, 20, property));
+		rooms.add(new Room("Banheiro", 4, 3, property));
+		rooms.add(new Room("Quarto", 8, 7, property));
+		rooms.add(new Room("Cozinha", 15, 10, property));
+		rooms.add(new Room("Sala", 20, 20, property));
 		
 		Room maiorRoom = roomService.getBiggestRoom(rooms);
 		
@@ -55,8 +55,8 @@ public class RoomServiceTest {
 
 	@Test
 	public void mustReturnRoomArea(){
-		Property property = new Property(1, "Casa 01", null);
-		Room room = new Room(1, "Banheiro", 4, 3, property);
+		Property property = new Property("Casa 01", null);
+		Room room = new Room("Banheiro", 4, 3, property);
 		assertEquals(12,roomService.getRoomArea(room));
 	}
 

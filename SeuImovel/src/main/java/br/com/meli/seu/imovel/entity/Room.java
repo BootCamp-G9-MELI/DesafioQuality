@@ -7,7 +7,8 @@ import java.util.Objects;
 public class Room {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "room_id_generator", sequenceName = "room_sequence", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "room_sequence")
     private long id;
     private String name;
     private double width;
@@ -17,8 +18,7 @@ public class Room {
     @JoinColumn(name = "property_id" , nullable = false)
     private Property property;
 
-    public Room(long id, String name, double width, double length, Property property) {
-        this.id = id;
+    public Room(String name, double width, double length, Property property) {
         this.name = name;
         this.width = width;
         this.length = length;
