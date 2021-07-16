@@ -1,6 +1,7 @@
 package br.com.meli.seu.imovel.entity;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 public class Room {
@@ -46,4 +47,13 @@ public class Room {
     public Property getProperty() {
         return property;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Room room = (Room) o;
+        return id == room.id && Double.compare(room.width, width) == 0 && Double.compare(room.length, length) == 0 && Objects.equals(name, room.name) && Objects.equals(property, room.property);
+    }
+
 }

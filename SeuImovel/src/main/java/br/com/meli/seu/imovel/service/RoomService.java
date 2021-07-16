@@ -38,4 +38,9 @@ public class RoomService {
 			return nextRoom;
 		}));
 	}
+
+	public double getRoomArea(Room room){
+		if(room.equals(new Room())) throw new RoomNotFoundException("Rooms not found.");
+		return room.getWidth() * room.getLength();
+	}
 }

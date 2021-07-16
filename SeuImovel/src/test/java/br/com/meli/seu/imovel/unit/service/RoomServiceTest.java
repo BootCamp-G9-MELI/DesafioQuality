@@ -45,15 +45,24 @@ public class RoomServiceTest {
 		Room maiorRoom = roomService.getBiggestRoom(rooms);
 		
 		assertEquals("Sala",maiorRoom.getName());
-		
 	}
 	
 	@Test
 	public void mustReturnWhenListRoomIsEmpty() {
 		List<Room> rooms = new ArrayList<>();
-		
 		assertThrows(RoomNotFoundException.class,() -> roomService.getBiggestRoom(rooms));
-		
 	}
 
+	@Test
+	public void mustReturnRoomArea(){
+		Property property = new Property(1, "Casa 01", null);
+		Room room = new Room(1, "Banheiro", 4, 3, property);
+		assertEquals(12,roomService.getRoomArea(room));
+	}
+
+	@Test
+	public void mustReturnWhenRoomIsEmpty(){
+		Room room = new Room();
+		assertThrows(RoomNotFoundException.class,() -> roomService.getRoomArea(room));
+	}
 }
