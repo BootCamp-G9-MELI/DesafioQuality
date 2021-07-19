@@ -8,6 +8,10 @@ Integrantes:
 - [vitorLSoares](https://github.com/vitorLSoares) :cow:
 - [ygorrodriguesmeli](https://github.com/ygorrodriguesmeli) :man_technologist:	
 
+## Documentação
+
+Swagger: http://localhost:8080/swagger-ui/#/
+
 ## Testes
 
-Para que os testes sejão efetuados com sucesso é necessário popular o banco via **localhost:8080/property/populate-database**
+Para que os testes sejam efetuados com sucesso é necessário popular o banco via **localhost:8080/populate-database**

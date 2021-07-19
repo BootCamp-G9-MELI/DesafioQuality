@@ -12,6 +12,8 @@ import br.com.meli.seu.imovel.entity.District;
 import br.com.meli.seu.imovel.entity.Property;
 import br.com.meli.seu.imovel.entity.Room;
 import br.com.meli.seu.imovel.service.PropertyService;
+import io.swagger.annotations.Api;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
@@ -31,6 +33,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/property")
+@Api(tags="Controller Property")
 public class PropertyController {
 
     private final PropertyService propertyService;
